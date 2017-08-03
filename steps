@@ -1,0 +1,63 @@
+The first step is to install Java which is required to run the Arduino IDE.
+
+1. Open a terminal. (CTRL+ALT+T)
+
+Note: Copy and paste the commands below without the $ character into the terminal and press [Enter]):
+2. Add the following PPA (Personal Package Archives) to install Oracle Java 8 which includes JDK8 and JRE8:
+
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java8-installer
+Note: You should accept the license agreement by selecting: Yes:
+[LEFT ARROW], [Enter]
+
+3. Check the Java installation, for example:
+
+$ java -version
+java version "1.8.0_101"
+Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
+
+Step 2: Install Ubuntu Development Tools
+Install the following development packages:
+
+$ sudo apt-get install ant gcc git make
+
+Step 3: GIT Clone Arduino Source
+Download the latest Arduino sources from the GIT master branch with the git clone command:
+
+$ cd ~/Downloads
+$ git clone https://github.com/arduino/Arduino.git
+
+Next time you can update to the latest sources with the git pull command and skip the git clone:
+
+$ git pull
+Step 4: Build Arduino Sources
+Build the sources:
+
+$ cd Arduino/build
+$ ant dist
+...
+[input] Enter version number: [1.6.11] < Press [Enter]
+...
+# Be patient!
+...
+BUILD SUCCESSFUL
+Total time: 9 minutes 10 seconds
+Step 5: Install Arduino
+
+Create the following directory:
+
+$ mkdir -p /home/$USER/.local/share/icons/hicolor/
+Install Arduino:
+
+$ cd linux/work/
+$ ./install.sh
+Optional:
+Create a symbolic link for Arduino tools:
+
+$ sudo ln -s /home/$USER/Downloads/Arduino/build/linux/work/arduino /usr/local/share/arduino-master
+$ ls -la /usr/local/share/arduino-master 
+lrwxrwxrwx 1 root root 54 aug 10 22:51 /usr/local/share/arduino-master -> /home/erwin/Downloads/Arduino/build/linux/work/arduino
+
+Step 6: Run the Arduino IDE
